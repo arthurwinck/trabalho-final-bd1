@@ -1,13 +1,33 @@
-version: "3.8"
+# Dependendo da versão do docker-compose, pode ser necessário trocar
+# para o outro yaml 
+
+# version: "3.8"
+# services:
+#     mysql-service:
+#       image: mysql:8.0.27
+#       restart: always
+#       ports:
+#         - "3306:3306"
+#       expose: [ 3306 ]
+#       volumes:
+#         - ./database_sql:/docker-entrypoint-initdb.d
+#       environment:
+#         - MYSQL_ROOT_PASSWORD=ThePassword
+#         - MYSQL_DATABASE=db_trabalho1
+#       configs:
+#         httpd-config:
+#           external: true
+version: '3.1'
 services:
-    mysql-service:
-      image: mysql:8.0.27
-      restart: always
-      ports:
-        - "3306:3306"
-      expose: [ 3306 ]
-      volumes:
-        - ./database_sql:/docker-entrypoint-initdb.d
-      environment:
-        - MYSQL_ROOT_PASSWORD=ThePassword
-        - MYSQL_DATABASE=db_trabalho1
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ThePassword
+      MYSQL_DATABASE: db_trabalho1
+    ports:
+      - "3306:3306"
+    expose: [ 3306 ]
+    volumes:
+      - ./database_sql:/docker-entrypoint-initdb.d

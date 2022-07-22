@@ -26,9 +26,9 @@ class ProfissionalView():
             print(self.profissional_helper.insert_dentista(cfo, idProfissional))
         elif(option == 10):
             id_profissional = input("Digite o id do profissional que você quer deletar")
-            print(self.profissional_helper.delete_profissional(id_profissional))
             print(self.profissional_helper.delete_profissional_med(id_profissional))
             print(self.profissional_helper.delete_profissional_dent(id_profissional))
+            print(self.profissional_helper.delete_profissional(id_profissional))
         elif(option == 26):
             print(self.profissional_helper.list_all_especialidade())
         elif(option == 27):
