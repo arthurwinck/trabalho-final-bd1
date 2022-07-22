@@ -35,6 +35,7 @@ CREATE TABLE `Dentista`
  `idProfissional` INT PRIMARY KEY
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4; 
 
+
 CREATE TABLE `Equipe` 
 ( 
  `id_departamento` INT PRIMARY KEY AUTO_INCREMENT,  
