@@ -15,7 +15,6 @@ class Paciente():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            print(e)
             return "Algo errado ocorreu, verifique os dados cadastrados!"
     
     def delete_paciente(self, id):

@@ -10,8 +10,8 @@ def gen_nome():
 
 def gen_cpf():
     # Não possui nenhuma validação
-    num = rd.randrange(1,10**9)
-    return (9 - len(str(num)))*'0' + str(num)
+    num = rd.randrange(1,10**11)
+    return (11 - len(str(num)))*'0' + str(num)
 
 def gen_data_cons():
 # Só possui validação de dias 31 ou 30 de meses

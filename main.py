@@ -9,7 +9,7 @@ from utils.gen import *
 def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inserts):
     error = []
     num_equipes = 5
-    num_prof = num_inserts//4
+    num_prof = num_inserts
 
     # Inserção de pacientes
     print("Adicionando pacientes")
@@ -35,9 +35,10 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
 
     # A relação entre profissionais e pacientes é de 1/4
     print("Adicionando profissionais")
+    print(num_prof)
     for i in range(num_prof):
         try:
-            profissional.insert_profissional(gen_nome(), gen_cpf(), gen_cns())
+            profissional.insert_profissional(gen_nome(), gen_cns(), gen_cpf())
         except Exception as e:
             print("Erro ao inserir profissionais")
             error.append(e)
@@ -56,10 +57,10 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
 
     # Metade dos profissionais são médicos a outra metade dentistas
     print("Adicionando médicos e dentistas")
-    for i in range(num_prof//2):
+    for i in range(1, int(num_prof/2) + 1):
         try:
             profissional.insert_medico(gen_cfm_cfo(), i)
-            profissional.insert_dentista(gen_cfm_cfo(), i+num_prof//2)
+            profissional.insert_dentista(gen_cfm_cfo(), i+int(num_prof/2))
         except Exception as e:
             print("Erro ao inserir medicos e dentistas")
             error.append(e)
@@ -67,7 +68,7 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
 
     # Metade dos profissionais tem especialidade
     print("Adicionando especialidades aos profissionais")
-    for i in range(num_prof//2):
+    for i in range(1, int(num_prof/2)+ 1):
         try:
             profissional.insert_profissional_especialidade(i, gen_rand(0, len(esp) - 1))
         except Exception as e:
@@ -76,9 +77,9 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
             return error
 
     print("Adicionando lotações")
-    for i in range(num_prof):
+    for i in range(1, num_prof + 1):
         try:
-            gerencia.insert_lotado(i % 5, i)
+            gerencia.insert_lotado(i % 5 + 1, i)
         except Exception as e:
             print("Erro ao inserir as lotações")
             error.append(e)
@@ -94,9 +95,9 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
             return error
 
     print("Adicionando medicamentos")
-    for i in range(20):
+    for i in range(1, 21):
         try:
-            medicamento.insert_medicamento(gen_nome_med(), i%5)
+            medicamento.insert_medicamento(gen_nome_med(), i % 5 + 1)
         except Exception as e:
             print("Erro ao inserir medicamentos")
             error.append(e)
@@ -112,17 +113,17 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
     #         return error
         
     print("Adicionando consultas")
-    for i in range(num_inserts):
+    for i in range(1, num_inserts + 1):
         try:
             #Alterar data?
-            consulta.insert_consulta(gen_data_cons(), i % num_prof, i)
+            consulta.insert_consulta(gen_data_cons(), i, i)
         except Exception as e:
             print("Erro ao inserir consultas")
             error.append(e)
             return error
 
     print("Adicionando receitas")
-    for i in range(num_inserts):
+    for i in range(1, num_inserts + 1):
         try:
             horas = gen_rand(1,12)
             qtd = gen_rand(1,30)
@@ -133,11 +134,12 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
             return error
 
     print("Adicionando relação receita medicamento")
-    for i in range(num_inserts):
+    for i in range(1, num_inserts + 1):
         try:
-            consulta.insert_receita_medicamento(i, i % 20)
+            consulta.insert_receita_medicamento(i, i % 20 + 1)
         except Exception as e:
             print("Erro ao inserir medicamentos a receitas")
+            print(i)
             error.append(e)
             return error
 

@@ -26,15 +26,16 @@ class Consulta():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
+            print(e)
             return e
     def insert_receita(self, orientacao, idConsulta, quantidade_medicamento):
         try:
             cursor = self.conn.cursor()
-            cursor.execute("""INSERT INTO Receita (orientacoes, qnt_medicamento, idConsulta) VALUES (DATE \'%s\', %s, %s)""" % (orientacao, idConsulta, quantidade_medicamento))
+            cursor.execute("""INSERT INTO Receita (orientacoes, qtd_medicamento, idConsulta) VALUES (\'%s\', %s, %s)""" % (orientacao, idConsulta, quantidade_medicamento))
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            return "Algo errado ocorreu, verifique os dados cadastrados!"
+            raise e
     
     def insert_receita_medicamento(self, id_receita, id_medicamento):
         try:
@@ -43,7 +44,7 @@ class Consulta():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            return "Algo errado ocorreu, verifique os dados cadastrados!"
+            raise e
     
     
     def delete_consulta(self, id):
@@ -53,7 +54,7 @@ class Consulta():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            return "Algo errado ocorreu, verifique se o paciente existe!"
+            raise e
     
     def delete_receita(self, id):
         try:
@@ -62,7 +63,7 @@ class Consulta():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            return "Algo errado ocorreu, verifique se o paciente existe!"
+            raise e
     
     def delete_receita_medicamento(self, id):
         try:
@@ -71,4 +72,4 @@ class Consulta():
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
-            return "Algo errado ocorreu, verifique se o paciente existe!"
+            raise e
