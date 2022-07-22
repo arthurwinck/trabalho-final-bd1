@@ -1,26 +1,17 @@
-from queries.paciente import Paciente
+from view.paciente_view import PacienteView
+from view.profissional_view import ProfissionalView
 
-
-
-paciente_helper = Paciente()
-
+paciente_view = PacienteView()
+profissional_view = ProfissionalView()
 while True:
 
     print("___________________________")
     print("Escolha uma opção")
     print("1-Criar paciente \n 2-Deletar paciente\n 3-Listar paciente")
+    print("4-listar profissionais \n 5- listar médicos \n 6-listar dentistas")
+    print("7- criar profissionais \n 8 -criar médicos \n 9-criar dentista \n 10-Deletar profissionais relacionados")
     option = int(input())
 
-    if(option == 1):
-        paciente_res = input("Digite o responsável pelo paciente")
-        nome = input("Digite o nome do paciente")
-        cpf = input("Digite o cpf do paciente")
-        data_nascimento = input("Digite a data de data_nascimento do paciente")
-        print(paciente_helper.insert_paciente(paciente_res, nome, cpf, data_nascimento))
     
-    if(option == 2):
-        id_paciente = int(input("Digite o id do paciente que quer excluir"))
-        print(paciente_helper.delete_paciente(id_paciente))
-    
-    if(option == 3):
-        print(paciente_helper.list_all())
+    paciente_view.crud(option)
+    profissional_view.crud(option)
