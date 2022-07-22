@@ -9,3 +9,5 @@ def connect_sql(user: str, password: str, host: str, database: str):
                                 use_pure=False, auth_plugin='mysql_native_password')
 
     return connection
+
+
