@@ -22,10 +22,27 @@ class ProfissionalView():
             print(self.profissional_helper.insert_medico(cfm, idProfissional))
         elif(option == 9):
             idProfissional = input("Digite o id do profissional a ser relacionado")
-            cfm = input("Digite o cfo do dentista")
+            cfo = input("Digite o cfo do dentista")
             print(self.profissional_helper.insert_dentista(cfo, idProfissional))
         elif(option == 10):
             id_profissional = input("Digite o id do profissional que você quer deletar")
             print(self.profissional_helper.delete_profissional(id_profissional))
             print(self.profissional_helper.delete_profissional_med(id_profissional))
             print(self.profissional_helper.delete_profissional_dent(id_profissional))
+        elif(option == 26):
+            print(self.profissional_helper.list_all_especialidade())
+        elif(option == 27):
+            titulo = input("Digite o titulo da especialidade")
+            print(self.profissional_helper.insert_especialidade(titulo))
+        elif(option == 28):
+            id_esp = input("Digite o id da especialidade que você quer apagar")
+            print(self.profissional_helper.delete_especialidade(id_esp))
+        elif(option == 35):
+            print(self.profissional_helper.list_all_profissional_especialidade())
+        elif(option == 36):
+            idProfissional = input("Digite o id do profissional")
+            idEspecialidade = input("Digite o id da especialidade")
+            print(self.profissional_helper.insert_profissional_especialidade(idProfissional, idEspecialidade))
+        elif(option == 37):
+            id_profissional_especialidade = input("Digite o id da relação profissional_especialidade que quer apagar")
+            print(self.profissional_helper.delete_profissional_especialidade(id_profissional_especialidade))

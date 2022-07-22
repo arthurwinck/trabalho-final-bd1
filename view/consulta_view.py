@@ -25,4 +25,12 @@ class ConsultaView():
         elif(option == 19):
             id_receita = input("Digite o id da receita que você quer apagar")
             print(self.consulta_helper.delete_receita(id_receita))
-        
+        elif(option == 31):
+            print(self.consulta_helper.list_all_receita_medicamento())
+        elif(option == 32):
+            id_receita = input("Selecione o id da receita")
+            id_medicamento = input("Selecione o id do medicamento")
+            print(self.consulta_helper.insert_receita_medicamento(id_receita, id_medicamento))
+        elif(option == 33):
+            id_receita_medicamento = input("Digite o id da relação receita-medicamento que você quer excluir")
+            print(self.consulta_helper.delete_receita_medicamento(id_receita_medicamento))

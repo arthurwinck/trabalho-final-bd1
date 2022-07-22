@@ -1,5 +1,6 @@
 from connect_sql import *
-class medicamento():
+
+class Medicamento():
     def __init__(self):
         self.conn = connect_sql('root', 'ThePassword', 'localhost', 'db_trabalho1')
 
