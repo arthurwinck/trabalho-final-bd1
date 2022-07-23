@@ -9,7 +9,7 @@ from utils.gen import *
 def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inserts):
     error = []
     num_equipes = 5
-    num_prof = num_inserts
+    num_prof = int(num_inserts//4)
 
     # Inserção de pacientes
     print("Adicionando pacientes")
@@ -36,7 +36,7 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
     # A relação entre profissionais e pacientes é de 1/4
     print("Adicionando profissionais")
     print(num_prof)
-    for i in range(num_prof):
+    for i in range(int(num_prof)):
         try:
             profissional.insert_profissional(gen_nome(), gen_cns(), gen_cpf())
         except Exception as e:
@@ -116,7 +116,7 @@ def autoinsert(paciente, profissional, gerencia, consulta, medicamento, num_inse
     for i in range(1, num_inserts + 1):
         try:
             #Alterar data?
-            consulta.insert_consulta(gen_data_cons(), i, i)
+            consulta.insert_consulta(gen_data_cons(), i % num_prof + 1, i)
         except Exception as e:
             print("Erro ao inserir consultas")
             error.append(e)
