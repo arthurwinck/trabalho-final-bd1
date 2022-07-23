@@ -18,3 +18,11 @@ class PacienteView():
         
         if(option == 3):
             print(self.paciente_helper.list_all())
+
+        elif (option == 42):
+            id = input("Digite o id do paciente que quer alterar (deixe em branco o que não quer alterar)\n")
+            paciente_resp = str(input("paciente_resp: "))
+            nome = str(input("nome: "))
+            cpf = str(input("cpf: "))
+            data_nascimento= str(input("data nasc: "))
+            print(self.paciente_helper.update_paciente(id, paciente_resp, nome, cpf, data_nascimento))

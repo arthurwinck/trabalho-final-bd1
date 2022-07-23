@@ -23,6 +23,16 @@ class Medicamento():
         except Exception as e:
             return "Algo errado ocorreu, verifique os dados cadastrados!"
         
+    def update_medicamento(self, id, nome, idfab):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""UPDATE Medicamento set nome = \"%s\", idFabricante = \"%d\" where id_medicamento = \'%d\'""" % (nome, int(idfab), int(id)))
+            self.conn.commit()
+            return "Sucesso"
+        except Exception as e:
+            print(e)
+            return "Algo errado ocorreu, verifique os dados cadastrados!"
+
     def insert_fabricante(self, nome):
         try:
             cursor = self.conn.cursor()
@@ -31,7 +41,7 @@ class Medicamento():
             return "Sucesso"
         except Exception as e:
             return "Algo errado ocorreu, verifique os dados cadastrados!"
-    
+
     def delete_fabricante(self, id):
         try:
             cursor = self.conn.cursor()

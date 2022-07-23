@@ -22,4 +22,8 @@ class MedicamentoView():
         elif(option == 25):
             id_fabricante = input("Digite o id do fabricante que quer deletar")
             print(self.medicamento_helper.delete_fabricante(id_fabricante))
-            
+        elif (option == 45):
+            id = input("Digite o id do medicamento: ")
+            nome = input("nome: ")
+            idfab = input("id fabricante: ")
+            print(self.medicamento_helper.update_medicamento(id, nome, idfab))

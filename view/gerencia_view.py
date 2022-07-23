@@ -23,4 +23,3 @@ class GerenciaView():
         elif(option == 31):
             id_lotacao = input("Digite o id da lotação que você quer apagar")
             print(self.gerencia_helper.delete_lotado(id_lotacao))
-        

@@ -29,6 +29,16 @@ class Profissional():
         cursor.execute("SELECT * FROM Profissional_especialidade")
         return cursor.fetchall()
 
+    def update_profissional(self, id, nome, cns, cpf):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""UPDATE Profissional set nome = \"%s\", cpf = \"%s\",  cns = \"%s\" where idProfissional = \"%d\"""" % (nome, cpf, cns, int(id)))
+            self.conn.commit()
+            return "Sucesso"
+        except Exception as e:
+            return "Algo errado ocorreu, verifique os dados cadastrados!"
+
+
     def insert_profissional(self, nome, cns, cpf):
         try:
             cursor = self.conn.cursor()

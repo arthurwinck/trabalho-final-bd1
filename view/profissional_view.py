@@ -46,3 +46,9 @@ class ProfissionalView():
         elif(option == 37):
             id_profissional_especialidade = input("Digite o id da relação profissional_especialidade que quer apagar")
             print(self.profissional_helper.delete_profissional_especialidade(id_profissional_especialidade))
+        elif (option == 43):
+            id = str(input("Insira o id do profissional: "))
+            nome = str(input("nome: "))
+            cns = str(input("cns: "))
+            cpf = str(input("cpf: "))
+            print(self.profissional_helper.update_profissional(id, nome, cns, cpf))

@@ -1,4 +1,5 @@
 from connect_sql import *
+from utils.create_update_query import create_update_query
 class Paciente():
     def __init__(self):
         self.conn = connect_sql('root', 'ThePassword', 'localhost', 'db_trabalho1')
@@ -8,6 +9,16 @@ class Paciente():
         cursor.execute("SELECT * FROM Paciente")
         return cursor.fetchall()
     
+    def update_paciente(self, id, paciente_resp, nome, cpf, data_nascimento):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""UPDATE Paciente set paciente_resp = \"%s\", nome = \"%s\",  cpf = \"%s\", data_nascimento = DATE \'%s\' where idPaciente = \'%d\'""" % (paciente_resp, nome, cpf, data_nascimento, int(id)))
+            self.conn.commit()
+            return "Sucesso"
+        except Exception as e:
+            print(e)
+            return "Algo errado ocorreu, verifique os dados cadastrados!"
+
     def insert_paciente(self, paciente_resp, nome, cpf, data_nascimento):
         try:
             cursor = self.conn.cursor()

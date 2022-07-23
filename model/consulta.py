@@ -28,6 +28,18 @@ class Consulta():
         except Exception as e:
             print(e)
             return e
+            
+    def update_consulta(self, id, data, medico, paciente):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""UPDATE Consulta set data_hora = \"%s\", idProfissional = \"%d\",  idPaciente = \"%d\" where idConsulta = \'%d\'""" % (data, int(medico), int(paciente), int(id)))
+            self.conn.commit()
+            return "Sucesso"
+        except Exception as e:
+            print(e)
+            return e
+
+
     def insert_receita(self, orientacao, idConsulta, quantidade_medicamento):
         try:
             cursor = self.conn.cursor()
@@ -36,6 +48,15 @@ class Consulta():
             return "Sucesso"
         except Exception as e:
             raise e
+
+    def update_receita(self, id,orientacao, idConsulta, quantidade_medicamento):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""UPDATE Receita set orientacoes = \"%s\", qtd_medicamento = \"%d\", idConsulta = \"%d\" where id_receita = \'%d\'""" % (orientacao, int(quantidade_medicamento), int(idConsulta), int(id)))
+            self.conn.commit()
+            return "Sucesso"
+        except Exception as e:
+            raise e       
     
     def insert_receita_medicamento(self, id_receita, id_medicamento):
         try:

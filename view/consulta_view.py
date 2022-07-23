@@ -34,3 +34,15 @@ class ConsultaView():
         elif(option == 33):
             id_receita_medicamento = input("Digite o id da relação receita-medicamento que você quer excluir")
             print(self.consulta_helper.delete_receita_medicamento(id_receita_medicamento))
+        elif (option == 44):
+            id = input("Digite o id da consulta")
+            data = input("Data da consulta")
+            medico = input("Medico da consulta")
+            paciente = input("Paciente da consulta")
+            print(self.consulta_helper.update_consulta(id, data, medico, paciente))
+        elif (option == 46):
+            id = input("Digite o id: ")
+            orientacao = input("Digite a orientação: ")
+            qtd_med = input("Digite a quantidade de med: ")
+            id_consulta = input("Digite o id da consulta")
+            print(self.consulta_helper.update_receita(id, orientacao, id_consulta, qtd_med))
