@@ -28,7 +28,7 @@ def init():
         print("20-para listar medicamentos \n 21-para listar fabricantes \n 22-para inserir medicamento \n 23-para inserir fabricante \n 24- para deletar medicamento \n 25- para deletar fabricante")
         print("26-para listar especialidade \n 27-para criar especialidade \n 28-para deletar uma especialidade")
         print("29-para listar lotacao \n 30-para criar lotacao \n 31-para deletar lotacao")
-        print("32-para listar receitas-medicamentos \n 33-para criar r-m \n 34-para excluir r-m")
+        print("32-para inserir receitas-medicamentos \n 33-para deletar r-m \n 34-para listar r-m")
         print("35-para lista profissional_especialidade \n 36-para criar profissional_especialidade \n 37-para excluir profissional_especialidade")
         print("38-consulta 1 - seção 6")
         print("39-consulta 2 - seção 6")

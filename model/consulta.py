@@ -43,7 +43,7 @@ class Consulta():
     def insert_receita(self, orientacao, idConsulta, quantidade_medicamento):
         try:
             cursor = self.conn.cursor()
-            cursor.execute("""INSERT INTO Receita (orientacoes, qtd_medicamento, idConsulta) VALUES (\'%s\', %s, %s)""" % (orientacao, idConsulta, quantidade_medicamento))
+            cursor.execute("""INSERT INTO Receita (orientacoes, qtd_medicamento, idConsulta) VALUES (\'%s\', %s, %s)""" % (orientacao, quantidade_medicamento, idConsulta))
             self.conn.commit()
             return "Sucesso"
         except Exception as e:
